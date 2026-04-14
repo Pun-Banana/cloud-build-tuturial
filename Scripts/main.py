@@ -3,10 +3,9 @@ from flask import Flask
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route("/message")
 def hello_world():
-    name = os.environ.get("NAME", "Cloud Run User")
-    return f"Hello {name}! Your Python service is live. In Version 1"
+    return f"Hello! Your Python service is live. In Version 2"
 
 if __name__ == "__main__":
     # Use the port assigned by Cloud Run or default to 8080
