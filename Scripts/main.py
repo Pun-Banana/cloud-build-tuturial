@@ -6,7 +6,7 @@ app = Flask(__name__)
 @app.route("/")
 def hello_world():
     name = os.environ.get("NAME", "Cloud Run User")
-    return f"Hello {name}! Your Python service is live."
+    return f"Hello {name}! Your Python service is live. In Version 1"
 
 if __name__ == "__main__":
     # Use the port assigned by Cloud Run or default to 8080
