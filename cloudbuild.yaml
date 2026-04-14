@@ -21,7 +21,7 @@ steps:
       - '--image'
       - 'gcr.io/$PROJECT_ID/hello-python-docker'
       - '--region'
-      - 'us-central1'
+      - 'asia-southeast1'
       - '--allow-unauthenticated'
 
 images:
