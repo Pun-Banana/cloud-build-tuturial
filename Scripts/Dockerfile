@@ -14,4 +14,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Run the web service on container startup. 
 # Gunicorn is used as the web server.
-CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 main:app
+CMD exec functions-framework --target=message --port=$PORT

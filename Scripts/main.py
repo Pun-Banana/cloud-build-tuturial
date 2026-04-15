@@ -1,11 +1,5 @@
-from flask import Flask
+import functions_framework
 
-app = Flask(__name__)
-
-@app.route("/message", methods=["GET", "POST"])
-def hello_world():
-    return f"Hello! Your Python service is live. In Version 2"
-
-if __name__ == "__main__":
-    # Use the port assigned by Cloud Run or default to 8080
-    app.run(debug=True, host="0.0.0.0", port=8080)
+@functions_framework.http
+def message(request):
+    return "Hello! This is message test version 3!"
