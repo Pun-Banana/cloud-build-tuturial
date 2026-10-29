@@ -1,0 +1,32 @@
+main:
+  params: [args]
+  steps:
+    - init:
+        assign:
+          - business_units: ${args.business_units}
+          - years: ${args.years}
+          - cloud_run_url: "https://function-testing-767708775019.asia-southeast1.run.app"
+    - loop_business_units:
+        for:
+          value: bu
+          in: ${business_units}
+          steps:
+            - loop_years:
+                for:
+                  value: yr
+                  in: ${years}
+                  steps:
+                    - call_cloud_run:
+                        call: http.post
+                        args:
+                          url: ${cloud_run_url}
+                          body:
+                            business_unit: ${bu}
+                            year: ${yr}
+                        result: task_result
+                    - log_progress:
+                        call: sys.log
+                        args:
+                          text: ${"Finished " + bu + " for year " + string(yr)}
+    - return_result:
+        return: "All business units and date ranges processed successfully!"
